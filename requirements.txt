@@ -3,13 +3,13 @@ pandas
 matplotlib
 seaborn
 wordcloud
-sklearn
+scikit-learn
 textblob
 nltk
 gensim
 spacy
-string
-re
 xgboost
+ensure==1.0.2
+python-box==6.0.2
 
 -e .
