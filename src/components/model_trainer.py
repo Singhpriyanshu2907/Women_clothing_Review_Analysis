@@ -52,25 +52,27 @@ class ModelTrainer:
             ('KNN', KNeighborsClassifier())
             ]
 
-            model_report = train_and_predict_models(X_train_scaled, Y_train, X_test_scaled, Y_test)
+            model_report:dict=train_and_predict_models(X_train_scaled,Y_train,X_test_scaled,Y_test)
             print(model_report)
             print('\n====================================================================================\n')
             logger.info(f'Model Report : {model_report}')
 
-            # Find the best model based on the highest test accuracy
-            best_model_name = max(model_report, key=lambda k: model_report[k]['test_accuracy'])
-            best_model_score = model_report[best_model_name]['test_accuracy']
+            best_model_info = max(model_report.items(), key=lambda x: x[1]['test_accuracy'])
+            best_model_name = best_model_info[0]
+            best_model_score = best_model_info[1]['test_accuracy']
 
-            # Find the model object from the model list based on the best model name
-            best_model_object = [model[1] for model in model_list if model[0] == best_model_name][0]
+            best_model_instance = next((model[1] for model in model_list if model[0] == best_model_name), None)
 
-            print(f'Best Model Found , Model Name : {best_model_name} , Accuracy Score : {best_model_score}')
+            if best_model_instance is None:
+                raise CustomException("Best model instance not found in model_list", sys)
+
+            print(f'Best Model Found , Model Name : {best_model_name} , Test Accuracy Score : {best_model_score}')
             print('\n====================================================================================\n')
-            logger.info(f'Best Model Found , Model Name : {best_model_name} , Accuracy Score : {best_model_score}')
+            logger.info(f'Best Model Found , Model Name : {best_model_name} , Test Accuracy Score : {best_model_score}')
 
             save_object(
-            file_path=self.model_trainer_config.trained_model_file_path,
-            obj=best_model_object
+                file_path=self.model_trainer_config.trained_model_file_path,
+                obj=best_model_instance
             )
           
 

@@ -25,14 +25,20 @@ class PredictPipeline:
             max_features=1000)
 
             # Fit the TF-IDF vectorizer to the input text data
-            TFIDF.fit(features)
+
+            train_df = pd.DataFrame(pd.read_excel(r'artifacts\train.xlsx'))
+
+            train = train_df.apply(lambda x: text_preprocessing(x))
+
+            set = TFIDF.fit_transform(train)
 
 
             data_scaled=features.apply(lambda x: text_preprocessing(x))
 
+
             transformed_data = TFIDF.transform(data_scaled)
 
-            pred=model.predict(transformed_data)
+            pred = model.predict(transformed_data)
             return pred
             
 
