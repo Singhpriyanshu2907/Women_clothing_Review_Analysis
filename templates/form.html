@@ -1,0 +1,19 @@
+<html>
+<body>
+<form action="{{url_for('predict_datapoint')}}" method="POST">
+    <div class="form-group">
+        <label for="review">Review:</label>
+        <textarea id="review" name="Review" placeholder="Enter your review" rows="4" cols="50"></textarea>
+    </div>
+
+<div style="clear:both;"></div>
+  <input type="submit" value="Submit">
+</form>
+
+{{final_result}}
+</body>
+</html>
+
+
+
+

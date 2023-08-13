@@ -14,20 +14,15 @@ list_of_files = [
     f"src/utils.py",
     f"src/autologger.py",
     f"src/exception.py",
-    f"src/config/__init__.py",
-    f"src/config/configuration.py",
     f"src/pipeline/__init__.py",
     f"src/pipeline/prediction_pipeline.py",
     f"src/pipeline/training_pipeline.py",
-    f"src/entity/__init__.py",
-    f"src/constants/__init__.py",
-    "config/config.yaml",
-    "params.yaml",
+    f"templates/index.html",
+    f"templates/form.html",
     "app.py",
     "main.py",
-    "Dockerfile",
     "setup.py",
-    f"research"
+    f"research/"
 ]
 
 

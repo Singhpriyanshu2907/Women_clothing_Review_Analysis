@@ -23,7 +23,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 @dataclass
 class DataTransformationconfig:
-    preprocessor_x_file_path=os.path.join('artifacts','preprocessor_num.pkl')
+    preprocessor_x_file_path=os.path.join('artifacts','preprocessor.pkl')
 
 
 ## Data Ingestionconfig class
